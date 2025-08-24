@@ -1,30 +1,37 @@
 import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
-// Liste réduite de blasons
+// Prototype: Quiz de blasons (liste augmentée avec 5 questions)
 const blasons = [
   {
     name: "Stark",
-    image: "https://www.lagardedenuit.com/wiki/images/8/89/Blason-stark-2014-v01-256px.png",
+    image: "https://www.lagardedenuit.com/images/3/3d/Blason_Stark.png",
     options: ["Stark", "Lannister", "Targaryen", "Baratheon"],
   },
   {
     name: "Lannister",
-    image: "https://www.lagardedenuit.com/wiki/images/e/e7/Blason-lannister-2014-v01-256px.png",
+    image: "https://www.lagardedenuit.com/images/f/f1/Blason_Lannister.png",
     options: ["Greyjoy", "Tully", "Lannister", "Arryn"],
   },
   {
     name: "Targaryen",
-    image: "https://www.lagardedenuit.com/wiki/images/8/80/Blason-targaryen-2014-v01-256px.png",
+    image: "https://www.lagardedenuit.com/images/1/1e/Blason_Targaryen.png",
     options: ["Martell", "Stark", "Targaryen", "Baratheon"],
   },
   {
     name: "Baratheon",
-    image: "https://www.lagardedenuit.com/wiki/images/a/a5/Blason-baratheon-2014-v01-256px.png",
+    image: "https://www.lagardedenuit.com/images/5/5e/Blason_Baratheon.png",
     options: ["Baratheon", "Tyrell", "Greyjoy", "Arryn"],
+  },
+  {
+    name: "Greyjoy",
+    image: "https://www.lagardedenuit.com/wiki/images/8/81/Blason-greyjoy-2014-v01-256px.png",
+    options: ["Greyjoy", "Stark", "Lannister", "Targaryen"],
   },
 ];
 
-function App() {
+export default function BlasonQuiz() {
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(false);
@@ -48,51 +55,49 @@ function App() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "2rem", fontFamily: "sans-serif" }}>
-      <h1>Quiz des Blasons de Westeros</h1>
-      <img
-        src={question.image}
-        alt="Blason"
-        style={{ width: "200px", margin: "20px auto" }}
-      />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", maxWidth: "300px", margin: "auto" }}>
-        {question.options.map((opt) => (
-          <button
-            key={opt}
-            onClick={() => handleAnswer(opt)}
-            style={{
-              padding: "10px",
-              backgroundColor:
-                answered && opt === question.name
-                  ? "lightgreen"
-                  : answered && opt === selected
-                  ? "salmon"
-                  : "#eee",
-            }}
-          >
-            {opt}
-          </button>
-        ))}
-      </div>
-      {answered && (
-        <div style={{ marginTop: "20px" }}>
-          {selected === question.name ? (
-            <p style={{ color: "green" }}>✅ Bonne réponse !</p>
-          ) : (
-            <p style={{ color: "red" }}>
-              ❌ Mauvais choix... La réponse était {question.name}.
-            </p>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
+      <Card className="w-full max-w-md p-6 text-center shadow-lg rounded-2xl">
+        <h1 className="text-2xl font-bold mb-4">Quiz des Blasons de Westeros</h1>
+        <CardContent>
+          <img
+            src={question.image}
+            alt="Blason"
+            className="mx-auto mb-4 w-40 h-40 object-contain"
+          />
+          <div className="grid grid-cols-2 gap-2">
+            {question.options.map((opt) => (
+              <Button
+                key={opt}
+                onClick={() => handleAnswer(opt)}
+                variant={
+                  answered && opt === question.name
+                    ? "default"
+                    : answered && opt === selected
+                    ? "destructive"
+                    : "outline"
+                }
+              >
+                {opt}
+              </Button>
+            ))}
+          </div>
+          {answered && (
+            <div className="mt-4">
+              {selected === question.name ? (
+                <p className="text-green-600 font-semibold">✅ Bonne réponse !</p>
+              ) : (
+                <p className="text-red-600 font-semibold">
+                  ❌ Mauvais choix... La réponse était {question.name}.
+                </p>
+              )}
+              <Button className="mt-2" onClick={nextQuestion}>
+                Question suivante
+              </Button>
+            </div>
           )}
-          <button onClick={nextQuestion} style={{ marginTop: "10px", padding: "10px" }}>
-            Question suivante
-          </button>
-        </div>
-      )}
-      <p style={{ marginTop: "20px" }}>
-        Score : {score} / {blasons.length}
-      </p>
+        </CardContent>
+      </Card>
+      <p className="mt-4 text-lg">Score : {score} / {blasons.length}</p>
     </div>
   );
 }
-
-export default App;
