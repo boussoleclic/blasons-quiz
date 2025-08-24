@@ -26,7 +26,7 @@ const blasons = [
   },
   {
     name: "Greyjoy",
-    image: "https://www.lagardedenuit.com/wiki/images/8/81/Blason-greyjoy-2014-v01-256px.png",
+    image: "https://www.lagardedenuit.com/images/9/9f/Blason_Greyjoy.png",
     options: ["Greyjoy", "Stark", "Lannister", "Targaryen"],
   },
 ];
