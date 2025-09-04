@@ -1,12 +1,8 @@
-# React + Vite
+# TEST - Quiz sur les blasons de la saga du Trône de Fer (A Song of Ice and Fire)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce petit site généère des quiz sur les blasons issus de l'univers de la saga littéraire du Trône de Fer (A Song of Ice and Fire)
 
-Currently, two official plugins are available:
+## Source des images
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Toutes les images sont hébergées par l'Encyclopédie de la Garde de Nuit, la communauté francophone de fans de la saga Le Trône de Fer de l'auteur américain George R. R. Martin. (https://www.lagardedenuit.com/wiki/index.php?title=Accueil)
+Tous les blasons ont été réalisés par Evrach.
